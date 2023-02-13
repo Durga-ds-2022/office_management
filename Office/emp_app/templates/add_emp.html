@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block add_emp %}
+
+<h3> Add Employee Details</h3>
+<hr>
+<form method="post" >
+   {% csrf_token %}
+   <div class="col-lg-6">
+      <label for="first_name" >First Name</label>
+      <input type="text" class="form-control " name="first_name">
+    </div>
+      <div class="col-lg-6">
+      <label for="last_name" >Last Name</label>
+      <input type="text" class="form-control " name="last_name">
+    </div>
+      <div class="col-lg-6">
+      <label for="dept" >Department</label>     
+      <select class="form-select" multiple aria-label="multiple select example", name="dept">
+        {% for i  in depts %}
+        <option value= {{i.id}} name="dept" >{{i.name}}, {{i.location}}</option>
+        {% endfor %} 
+      </select>
+    </div>
+      <div class="col-lg-6">
+      <label for="salary" >Salary</label><br>
+      <input type="number" class="form-control " name="salary"><br>
+    </div>
+      <div class="col-lg-6">
+      <label for="role" >Role</label><br>
+      <select  class="form-control" multiple aria-label="multiple select example", name="role">
+        {% for i  in roles %}
+        <option value= {{i.id}} name="role" >{{i.name}}</option>
+        {% endfor %} 
+      </select>
+    </div>
+      <div class="col-lg-6">
+      <label for="phone_number" >Phone Number</label><br>
+      <input type="tel" class="form-control " name="phone_number"><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  
+{% endblock add_emp %}
